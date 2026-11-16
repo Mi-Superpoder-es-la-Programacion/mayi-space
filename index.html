@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a0b2e">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <title>Mayi Space</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="texts.js" defer></script>
+  <script src="questions.js" defer></script>
+  <script src="tutorial.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><img class="brand-logo" src="assets/logo-mayi-space.png" alt=""><span><span data-i18n="brandTitle">MAYI SPACE</span></span></div>
+      <a class="resources-nav" href="recursos.html" data-i18n="resourcesNav">Recursos del proyecto</a>
+      <a class="resources-nav team-nav" href="equipo.html" target="_blank" rel="noopener" data-i18n="teamNav">Nuestro equipo</a>
+      <button id="arduino-btn" class="arduino-btn hidden" type="button" aria-pressed="false" data-state="off"><span class="arduino-dot" aria-hidden="true"></span><span id="arduino-label">Arduino</span></button>
+      <button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="true" aria-label="Silenciar sonidos">🔊 <span data-i18n="soundOn">Sonido activado</span></button>
+      <div class="language-switch" role="group" aria-label="Language / Idioma">
+        <button id="lang-es" type="button" aria-pressed="true" aria-label="Español" title="Español"><svg class="flag" viewBox="0 0 36 24" aria-hidden="true" focusable="false"><rect width="36" height="12" fill="#FCD116"/><rect y="12" width="36" height="6" fill="#003893"/><rect y="18" width="36" height="6" fill="#CE1126"/></svg></button>
+        <button id="lang-en" type="button" aria-pressed="false" aria-label="English" title="English"><svg class="flag" viewBox="0 0 36 24" aria-hidden="true" focusable="false"><rect width="36" height="24" fill="#B22234"/><rect y="1.846" width="36" height="1.846" fill="#fff"/><rect y="5.538" width="36" height="1.846" fill="#fff"/><rect y="9.231" width="36" height="1.846" fill="#fff"/><rect y="12.923" width="36" height="1.846" fill="#fff"/><rect y="16.615" width="36" height="1.846" fill="#fff"/><rect y="20.308" width="36" height="1.846" fill="#fff"/><rect width="14.4" height="12.923" fill="#3C3B6E"/><circle cx="2.4" cy="2.2" r="0.75" fill="#fff"/><circle cx="6" cy="2.2" r="0.75" fill="#fff"/><circle cx="9.6" cy="2.2" r="0.75" fill="#fff"/><circle cx="13.2" cy="2.2" r="0.75" fill="#fff"/><circle cx="2.4" cy="6.1" r="0.75" fill="#fff"/><circle cx="6" cy="6.1" r="0.75" fill="#fff"/><circle cx="9.6" cy="6.1" r="0.75" fill="#fff"/><circle cx="13.2" cy="6.1" r="0.75" fill="#fff"/><circle cx="2.4" cy="10" r="0.75" fill="#fff"/><circle cx="6" cy="10" r="0.75" fill="#fff"/><circle cx="9.6" cy="10" r="0.75" fill="#fff"/><circle cx="13.2" cy="10" r="0.75" fill="#fff"/></svg></button>
+      </div>
+    </header>
+    <main>
+      <section id="intro" class="intro screen">
+        <div class="intro-art">
+          <div class="planet planet-one"></div><div class="planet planet-two"></div>
+          <span class="orbit-star star-one" aria-hidden="true">✦</span><span class="orbit-star star-two" aria-hidden="true">✧</span>
+          <img class="intro-mayito" src="assets/intro-mayito.png" alt="Mayito astronauta">
+          <div class="intro-badge" data-i18n="introBadge">7 bases · 1 misión</div>
+        </div>
+        <div class="intro-content">
+          <h1 data-i18n="introTitle">¡Mayito necesita tu ayuda en la Luna!</h1>
+          <p class="lead" data-i18n="introLead">Responde preguntas reales de ciencia espacial y cuida el aire, la energía y el refugio.</p>
+          <div class="how-to-play">
+            <h2 data-i18n="howTitle">¿Cómo se juega?</h2>
+            <ol>
+              <li data-i18n="howOne">Lee el problema de la base.</li>
+              <li data-i18n="howTwo">Elige la mejor respuesta.</li>
+              <li data-i18n="howThree">Llega a la base 7 sin que una barra llegue a cero.</li>
+            </ol>
+          </div>
+          <div class="name-field">
+            <label for="player-name" data-i18n="nameLabel">¿Cómo te llamas?</label>
+            <input id="player-name" type="text" maxlength="20" autocomplete="given-name">
+            <small id="name-error" class="name-error hidden" data-i18n="nameError">Escribe tu nombre para empezar.</small>
+          </div>
+          <fieldset class="time-field">
+            <legend data-i18n="timeLabel">¿Cuánto tiempo por pregunta?</legend>
+            <div class="time-options">
+              <label class="time-opt"><input type="radio" name="time" value="60" checked><span><i aria-hidden="true">⏱️</i> <b data-i18n="time60">1 minuto</b></span></label>
+              <label class="time-opt"><input type="radio" name="time" value="30"><span><i aria-hidden="true">⚡</i> <b data-i18n="time30">30 segundos</b></span></label>
+              <label class="time-opt"><input type="radio" name="time" value="0"><span><i aria-hidden="true">🧘</i> <b data-i18n="time0">Sin tiempo</b></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="time-field order-field">
+            <legend data-i18n="orderLabel">¿En qué orden van las preguntas?</legend>
+            <div class="time-options">
+              <label class="time-opt"><input type="radio" name="order" value="fixed" checked><span><i aria-hidden="true">📋</i> <b data-i18n="orderFixed">Predeterminadas</b></span></label>
+              <label class="time-opt"><input type="radio" name="order" value="random"><span><i aria-hidden="true">🎲</i> <b data-i18n="orderRandom">Aleatorias</b></span></label>
+            </div>
+          </fieldset>
+          <button id="start" class="primary" type="button"><span data-i18n="start">¡Empezar la misión!</span><span aria-hidden="true"> →</span></button>
+          <p class="audio-intro" data-i18n="audioIntro">🎧 La misión incluye audios históricos de NASA en inglés y efectos del juego. Puedes silenciarlos cuando quieras.</p>
+        </div>
+      </section>
+      <section id="tutorial" class="tutorial screen hidden" aria-live="polite">
+        <div class="tutorial-card">
+          <figure class="tutorial-art"><img id="tutorial-img" alt=""></figure>
+          <div class="tutorial-body">
+            <p class="eyebrow" id="tutorial-count"></p>
+            <h1 id="tutorial-title"></h1>
+            <p id="tutorial-text" class="tutorial-text"></p>
+            <ul id="tutorial-bars" class="tutorial-bars hidden"></ul>
+            <div class="tutorial-actions">
+              <button id="tutorial-back" class="restart" type="button" data-i18n="tutBack">← Atrás</button>
+              <button id="tutorial-next" class="primary" type="button"></button>
+            </div>
+            <button id="tutorial-skip" class="tutorial-skip" type="button" data-i18n="tutSkip">Saltar tutorial</button>
+          </div>
+        </div>
+        <div id="tutorial-dots" class="progress" aria-hidden="true"></div>
+      </section>
+      <section id="play" class="play screen hidden" aria-live="polite">
+        <div class="play-top"><div><p class="eyebrow" id="day-label"></p><h1 id="event-title"></h1></div><button id="timer" class="timer" type="button"><span id="timer-icon" aria-hidden="true">⏱️</span><span id="timer-num">1:00</span></button><span id="timer-sr" class="sr-only" aria-live="polite"></span><button id="restart" class="restart" type="button" data-i18n="restart">Empezar de nuevo</button></div>
+        <div id="progress" class="progress" aria-label="Progreso de la misión"></div>
+        <div class="game-grid">
+          <aside class="status-card" aria-label="Recursos de la base">
+            <h2 data-i18n="resourcesTitle">Recursos de la base</h2>
+            <p class="status-intro" data-i18n="resourcesIntro">Si una barra llega a cero, la misión termina.</p>
+            <div class="meter"><div class="meter-top"><span class="meter-name"><span class="meter-symbol oxygen" aria-hidden="true"><img src="assets/icons/air.svg" alt=""></span><span data-i18n="oxygenName">Aire</span></span><strong id="oxygen-value"></strong></div><div class="track"><div id="oxygen-bar" class="fill oxygen"></div></div></div>
+            <div class="meter"><div class="meter-top"><span class="meter-name"><span class="meter-symbol energy" aria-hidden="true"><img src="assets/icons/energy.svg" alt=""></span><span data-i18n="energyName">Energía</span></span><strong id="energy-value"></strong></div><div class="track"><div id="energy-bar" class="fill energy"></div></div></div>
+            <div class="meter"><div class="meter-top"><span class="meter-name"><span class="meter-symbol shield" aria-hidden="true"><img src="assets/icons/shelter.svg" alt=""></span><span data-i18n="shieldName">Refugio</span></span><strong id="shield-value"></strong></div><div class="track"><div id="shield-bar" class="fill shield"></div></div></div>
+            <div class="night-note"><span id="rule-note" data-i18n="ruleNote">✅ Aciertas: sumas y ganas ⭐. ❌ Fallas: restas.</span></div>
+            <p class="score-line"><span aria-hidden="true">⭐</span> <span data-i18n="discoveries">Descubrimientos</span>: <strong id="science-value">0</strong></p>
+          </aside>
+          <div class="story-card">
+            <div class="room-head"><figure class="room-art" id="room-art-box"><img id="room-art" alt=""><button type="button" id="art-earth" class="art-half art-earth"><span class="art-pill"></span></button><button type="button" id="art-space" class="art-half art-space"><span class="art-pill"></span></button></figure><p id="art-caption" class="art-caption hidden" role="status"></p><div class="narrator"><img src="assets/mayito-astronauta.webp" alt="" class="narrator-image"><div class="speech"><span class="speech-label" data-i18n="mayitoSays">MAYITO DICE</span><p id="event-story"></p></div></div></div>
+            <div id="choice-area"><h2 data-i18n="chooseTitle">¿Qué haces?</h2><div id="choices" class="choices"></div></div>
+            <div id="result" class="result hidden"></div>
+          </div>
+        </div>
+      </section>
+      <section id="ending" class="ending screen hidden" aria-live="polite">
+        <div class="ending-card"><img src="assets/mayito-astronauta.webp" alt="" class="ending-mayito"><div><p class="eyebrow" data-i18n="missionEnd">FIN DE LA MISIÓN</p><h1 id="ending-title"></h1><p id="ending-text" class="ending-text"></p><p id="achievement" class="achievement"></p><div id="ending-tip" class="mayito-tip hidden"></div><p id="ending-learning" class="learning"></p><div class="ending-actions"><button id="diploma-btn" class="primary diploma-btn hidden" type="button" data-i18n="diplomaBtn">🎓 Ver mi diploma</button><button id="again" class="primary" type="button"><span data-i18n="again">¡Jugar otra vez!</span><span aria-hidden="true"> ↻</span></button></div></div></div>
+      </section>
+    </main>
+    <div id="arduino-toast" class="arduino-toast hidden" role="status" aria-live="polite"></div>
+    <div id="fx-layer" class="fx-layer" aria-hidden="true"></div>
+    <div id="audio-caption" class="audio-caption hidden" role="status" aria-live="polite"></div>
+    <footer><p data-i18n="footerNote">Puntos del juego = reglas educativas, no medidas reales de una base lunar.</p><div><a href="https://misuperpodereslaprogramacion.com/" target="_blank" rel="noopener noreferrer" data-i18n="charactersSource">Personajes: Mi Superpoder es la Programación ↗</a><a href="https://osdr.nasa.gov/bio/" target="_blank" rel="noopener noreferrer" data-i18n="osdrSource">Datos: NASA OSDR ↗</a></div></footer>
+  </div>
+  <div id="restart-modal" class="restart-modal hidden" role="alertdialog" aria-modal="true" aria-labelledby="restart-title" aria-describedby="restart-text">
+    <div class="restart-card">
+      <span class="restart-icon" aria-hidden="true">🔄</span>
+      <h2 id="restart-title">¿Empezar de nuevo?</h2>
+      <p id="restart-text"></p>
+      <div class="restart-actions">
+        <button id="restart-yes" class="primary" type="button">Sí, empezar de nuevo</button>
+        <button id="restart-no" class="restart" type="button">No, seguir jugando</button>
+      </div>
+    </div>
+  </div>
+  <div id="diploma-modal" class="diploma-modal hidden" role="dialog" aria-modal="true" aria-labelledby="diploma-title">
+    <div class="diploma-wrap">
+      <div class="diploma-actions">
+        <button id="diploma-print" class="primary" type="button" data-i18n="diplomaPrint">🖨️ Imprimir</button>
+        <button id="photo-open" class="restart" type="button" data-i18n="photoBtn">📸 Tomarme una foto</button>
+        <button id="photo-remove" class="restart hidden" type="button" data-i18n="photoRemove">Quitar foto</button>
+        <button id="diploma-close" class="restart" type="button" data-i18n="diplomaClose">Cerrar</button>
+      </div>
+      <article id="diploma" class="diploma">
+        <div class="diploma-frame">
+          <header class="diploma-head">
+            <svg class="diploma-patch" viewBox="0 0 200 200" aria-hidden="true">
+              <defs><path id="arc-top" d="M 30,100 A 70,70 0 0 1 170,100"/><path id="arc-bottom" d="M 22,100 A 78,78 0 0 0 178,100"/></defs>
+              <circle cx="100" cy="100" r="95" fill="#1d0f33" stroke="#14091f" stroke-width="6"/>
+              <circle cx="100" cy="100" r="86" fill="none" stroke="#ffd21f" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>
+              <circle cx="100" cy="104" r="50" fill="#2e6fe3" stroke="#14091f" stroke-width="4"/>
+              <circle cx="80" cy="120" r="9" fill="#1f56bd"/><circle cx="122" cy="126" r="6" fill="#1f56bd"/><circle cx="118" cy="92" r="5" fill="#1f56bd"/>
+              <g transform="rotate(32 100 100)">
+                <path d="M100 48 C113 63 115 92 108 114 H92 C85 92 87 63 100 48Z" fill="#fff" stroke="#14091f" stroke-width="3"/>
+                <circle cx="100" cy="80" r="6.5" fill="#ffd21f" stroke="#14091f" stroke-width="2.5"/>
+                <path d="M92 104 L78 124 L92 117Z M108 104 L122 124 L108 117Z" fill="#e8262b" stroke="#14091f" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M95 114 Q100 138 105 114Z" fill="#ff8a0a" stroke="#14091f" stroke-width="2"/>
+              </g>
+              <path d="M40 78 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z M160 62 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5z" fill="#ffd21f"/>
+              <text font-family="Gochi Hand, sans-serif" font-size="17" fill="#ffd21f" letter-spacing="1.5"><textPath href="#arc-top" startOffset="50%" text-anchor="middle">JUNIOR ASTRONAUT</textPath></text>
+              <text font-family="Gochi Hand, sans-serif" font-size="16" fill="#ffd21f" letter-spacing="1.5"><textPath href="#arc-bottom" startOffset="50%" text-anchor="middle">MISSION TRAINER</textPath></text>
+            </svg>
+            <div class="diploma-heading">
+              <p class="diploma-kicker" id="diploma-kicker"></p>
+              <h2 id="diploma-title"></h2>
+            </div>
+            <img class="diploma-logo" src="assets/space-apps-logo.png" alt="NASA Space Apps Challenge">
+          </header>
+          <div class="diploma-body">
+            <figure class="diploma-photo hidden" id="diploma-photo"><img id="diploma-photo-img" alt=""><span class="photo-star" aria-hidden="true">★</span></figure>
+            <div class="diploma-main">
+              <p class="diploma-awarded" id="diploma-awarded"></p>
+              <p class="diploma-name" id="diploma-name"></p>
+              <p class="diploma-text" id="diploma-text"></p>
+              <p class="diploma-rank" id="diploma-rank"></p>
+            </div>
+          </div>
+          <ul class="diploma-stamps" id="diploma-stamps"></ul>
+          <div class="diploma-foot">
+            <div class="diploma-sign"><img src="assets/mayito-astronauta.webp" alt=""><span id="diploma-sign"></span></div>
+            <div class="diploma-date"><span id="diploma-date-label"></span><strong id="diploma-date"></strong></div>
+            <p class="diploma-fine"><span id="diploma-based"></span><br><span id="diploma-disclaimer"></span></p>
+          </div>
+        </div>
+      </article>
+    </div>
+  
+    <div id="camera-panel" class="camera-panel hidden" role="dialog" aria-modal="true" aria-label="Cámara">
+      <div class="camera-card">
+        <div class="camera-view">
+          <video id="camera-video" playsinline muted autoplay></video>
+          <span id="camera-count" class="camera-count hidden" aria-hidden="true"></span>
+        </div>
+        <p id="camera-hint" class="camera-hint" data-i18n="photoHint">Mira a la cámara y sonríe 😄</p>
+        <p id="camera-error" class="camera-error hidden" role="alert" data-i18n="photoError"></p>
+        <p class="camera-privacy" data-i18n="photoPrivacy"></p>
+        <div class="camera-actions">
+          <button id="camera-shoot" class="primary" type="button" data-i18n="photoShoot">¡Foto!</button>
+          <button id="camera-cancel" class="restart" type="button" data-i18n="photoCancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div></body>
+</html>

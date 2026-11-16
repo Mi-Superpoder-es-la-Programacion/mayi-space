@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a0b2e">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <title>Recursos del proyecto · Mayi Space</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="texts.js" defer></script>
+  <script src="questions.js" defer></script>
+  <script src="references.js" defer></script>
+  <script src="recursos.js" defer></script>
+</head>
+<body class="page-resources">
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-mayi-space.png" alt=""><span><span data-i18n="brandTitle">MAYI SPACE</span></span></a>
+      <a class="resources-nav" href="index.html" data-i18n="backToGame">← Volver al juego</a>
+      <a class="resources-nav team-nav" href="equipo.html" data-i18n="teamNav">Nuestro equipo</a>
+      <div class="language-switch" role="group" aria-label="Language / Idioma">
+        <button id="lang-es" type="button" aria-pressed="true" aria-label="Español" title="Español"><svg class="flag" viewBox="0 0 36 24" aria-hidden="true" focusable="false"><rect width="36" height="12" fill="#FCD116"/><rect y="12" width="36" height="6" fill="#003893"/><rect y="18" width="36" height="6" fill="#CE1126"/></svg></button>
+        <button id="lang-en" type="button" aria-pressed="false" aria-label="English" title="English"><svg class="flag" viewBox="0 0 36 24" aria-hidden="true" focusable="false"><rect width="36" height="24" fill="#B22234"/><rect y="1.846" width="36" height="1.846" fill="#fff"/><rect y="5.538" width="36" height="1.846" fill="#fff"/><rect y="9.231" width="36" height="1.846" fill="#fff"/><rect y="12.923" width="36" height="1.846" fill="#fff"/><rect y="16.615" width="36" height="1.846" fill="#fff"/><rect y="20.308" width="36" height="1.846" fill="#fff"/><rect width="14.4" height="12.923" fill="#3C3B6E"/><circle cx="2.4" cy="2.2" r="0.75" fill="#fff"/><circle cx="6" cy="2.2" r="0.75" fill="#fff"/><circle cx="9.6" cy="2.2" r="0.75" fill="#fff"/><circle cx="13.2" cy="2.2" r="0.75" fill="#fff"/><circle cx="2.4" cy="6.1" r="0.75" fill="#fff"/><circle cx="6" cy="6.1" r="0.75" fill="#fff"/><circle cx="9.6" cy="6.1" r="0.75" fill="#fff"/><circle cx="13.2" cy="6.1" r="0.75" fill="#fff"/><circle cx="2.4" cy="10" r="0.75" fill="#fff"/><circle cx="6" cy="10" r="0.75" fill="#fff"/><circle cx="9.6" cy="10" r="0.75" fill="#fff"/><circle cx="13.2" cy="10" r="0.75" fill="#fff"/></svg></button>
+      </div>
+    </header>
+    <main>
+      <section id="resources" class="resources-section" aria-labelledby="resources-heading">
+        <h1 id="resources-heading" data-i18n="resourcesHeading">Recursos del proyecto</h1>
+        <div class="resource-tabs" role="tablist">
+          <button id="tab-studies" class="resource-tab" type="button" role="tab" aria-selected="true" aria-controls="panel-studies" data-i18n="tabStudies">🧬 Estudios NASA OSDR</button>
+          <button id="tab-credits" class="resource-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-credits" data-i18n="tabCredits">🚀 Reto y créditos</button>
+        </div>
+        <div id="panel-studies" class="resource-panel" role="tabpanel" aria-labelledby="tab-studies">
+          <p class="studies-intro" data-i18n="studiesIntro"></p>
+          <ol id="reference-grid" class="reference-grid"></ol>
+        </div>
+        <div id="panel-credits" class="resource-panel hidden" role="tabpanel" aria-labelledby="tab-credits">
+<div class="resource-list">
+          <article class="resource-card challenge-card"><div><img class="space-apps-logo" src="assets/space-apps-logo.png" alt="NASA Space Apps Challenge"><h3 data-i18n="resourceChallengeTitle">Reto oficial</h3><p data-i18n="resourceChallengeText">Define el objetivo: un juego para niños que muestre los costos de mantener una base lunar o marciana.</p><a href="https://www.spaceappschallenge.org/2026/challenges/junior-astronaut-mission-trainer/?tab=details" target="_blank" rel="noopener noreferrer" data-i18n="resourceChallengeLink">Leer el reto ↗</a></div><div class="challenge-stats" aria-hidden="true"><span><b>7</b><small data-i18n="challengeDays">días de misión</small></span><span><b>3</b><small data-i18n="challengeResources">recursos vitales</small></span></div></article>
+          <article class="resource-card"><span aria-hidden="true">🧬</span><h3 data-i18n="resourceOsdrTitle">Estudios reales · NASA OSDR</h3><p data-i18n="resourceOsdrText">Cada pregunta se basa en un estudio real del repositorio abierto de la NASA.</p><a href="https://osdr.nasa.gov/bio/" target="_blank" rel="noopener noreferrer" data-i18n="resourceOsdrLink">Ver el repositorio ↗</a></article>
+          <article class="resource-card"><span aria-hidden="true">🐰</span><h3 data-i18n="resourceCharactersTitle">Mayito y sus amigos</h3><p data-i18n="resourceCharactersText">Las ilustraciones de Mayito, Violeta y Rocco vienen de Mi Superpoder es la Programación.</p><a href="https://misuperpodereslaprogramacion.com/" target="_blank" rel="noopener noreferrer" data-i18n="resourceCharactersLink">Conocer el proyecto ↗</a></article>
+          <article class="resource-card"><span aria-hidden="true">🎙️</span><h3 data-i18n="resourceAudioTitle">Voces y radio de NASA</h3><p data-i18n="resourceAudioText">Audios históricos de Apollo 11 y una señal de radio Quindar. Se reproducen en momentos del juego; los efectos cortos son nuestros.</p><a href="https://www.nasa.gov/historical-sounds/" target="_blank" rel="noopener noreferrer" data-i18n="resourceAudioLink">Escuchar la colección ↗</a></article>
+        </div>
+          <p class="build-note" data-i18n="buildNote">🧩 Hecho con HTML, CSS y JavaScript. Usamos Git para guardar las versiones del proyecto.</p>
+        </div>
+        <p class="source-disclaimer" data-i18n="sourceDisclaimer">Proyecto educativo independiente del equipo. Los logotipos y audios se muestran con atribución; NASA no patrocina este juego.</p>
+      </section>
+    </main>
+    <footer><p data-i18n="footerNote">Los puntos son reglas del juego, no medidas reales.</p><div><a href="https://misuperpodereslaprogramacion.com/" target="_blank" rel="noopener noreferrer" data-i18n="charactersSource">Personajes: Mi Superpoder es la Programación ↗</a><a href="https://osdr.nasa.gov/bio/" target="_blank" rel="noopener noreferrer" data-i18n="osdrSource">Datos: NASA OSDR ↗</a></div></footer>
+  </div>
+</body>
+</html>
